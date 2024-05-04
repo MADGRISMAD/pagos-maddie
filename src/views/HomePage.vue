@@ -34,7 +34,7 @@
             <ion-text class="total-amount">{{ totalPagar }} pesos</ion-text>
           </ion-item>
           <div v-if="totalPagar !== null" class="happy-face">
-            <ion-label>{{ mostrarCaritaPorPago(totalPagar) }}</ion-label>
+            <img :src="mostrarCaritaPorPago(totalPagar)" alt="Carita">
           </div>
         </ion-card-content>
       </ion-card>
@@ -104,12 +104,20 @@ export default defineComponent({
       }
     },
     mostrarCaritaPorPago(total) {
-      if (total <= 300) {
-        return '😊 ¡Feliz!';
+      if (total <= 200) {
+        return './public/200.gif'; // Ruta del GIF para total <= 200
+      } else if (total <= 300) {
+        return './public/300.gif'; // Ruta del GIF para 200 < total <= 300
+      } else if (total <= 400) {
+        return './public/400.gif'; // Ruta del GIF para 300 < total <= 400
       } else if (total <= 500) {
-        return '😄 ¡Contento!';
+        return './public/500.gif'; // Ruta del GIF para 400 < total <= 500
+      } else if (total <= 600) {
+        return './public/600.gif'; // Ruta del GIF para 500 < total <= 600
+      } else if (total <= 700) {
+        return './public/700.gif'; // Ruta del GIF para 600 < total <= 700
       } else {
-        return '🤑 ¡Rico!';
+        return ''; // En caso de que el total esté fuera de estos rangos
       }
     },
     limpiarFormulario() {
@@ -137,7 +145,6 @@ export default defineComponent({
 
 .happy-face {
   text-align: center;
-  font-size: 40px;
   margin-top: 20px;
 }
 </style>
