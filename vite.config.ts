@@ -1,21 +1,21 @@
-import legacy from '@vitejs/plugin-legacy'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
+import legacy from '@vitejs/plugin-legacy'; // Importa el plugin legacy
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    legacy()
+    legacy(), // Agrega el plugin legacy para compatibilidad con navegadores antiguos
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  test: {
-    globals: true,
-    environment: 'jsdom'
-  }
-})
+  css: {
+    postcss: {
+      config: path.resolve(__dirname, './postcss.config.js'), // Especifica la ruta completa del archivo .cjs
+    },
+  },
+});
