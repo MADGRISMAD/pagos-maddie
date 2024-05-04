@@ -1,0 +1,7 @@
+{
+  "name": "pagos maddie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
